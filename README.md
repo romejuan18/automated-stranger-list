@@ -7,6 +7,9 @@ creation, editing and deletion of items from a list of episodes of the Strangers
 
 The requirement for this project is to have [Node.js](https://nodejs.org/en/)
 
+And if you want to run the project using docker-compose install docker-desktop on your
+machine [Docker Desktop](https://docs.docker.com/desktop/linux/install/)
+
 ### Installation
 
 ```shell
@@ -27,11 +30,12 @@ npm run open
 
 ## Additional NPM Scripts
 
-| Script         | Description                                                                      |
-| -------------- | -------------------------------------------------------------------------------- |
-| open           | Starts cypress debugger mode, allowing you to deploy an instance of the browser  |
-| e2e            | Starts the test cases in headless browser mode                                   |
-| repeat         | Run test cases n times in headless-mode with the cypress-repeat plugin           |
+| Script         | Description                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------|
+| open           | Starts cypress debugger mode, allowing you to deploy an instance of the browser                       |
+| all            | Start a test case in headless browser mode and generate an html report of the execution on completion |
+| e2e            | Starts the test cases in headless browser mode                                                        |
+| repeat         | Run test cases n times in headless-mode with the cypress-repeat plugin                                |
 
 For a complete list of scripts see [package.json](./package.json)
 
@@ -43,13 +47,33 @@ For a complete list of scripts see [package.json](./package.json)
 npm run open
 ```
 
-2. To run in headless mode and generate report
+2. To run a specific script in headless mode
 
 ```shell
-npm run e2e
+npm run e2e "path"  
 ```
 
-3. To run the scripts n times
+**e.g**
+
+```shell
+npm run e2e cypress/integration/Stranger-List/E2E/Creators_series.js
+```
+
+3. To run all e2e scripts in headless mode and generate a report in html file
+
+```shell
+npm run all  
+```
+
+The report is saved in the following path
+
+**e.g**
+
+```shell
+Path: "./automated-stranger-list/mochawesome-report/mochawesome.html"
+```
+
+4. To run the scripts n times
 
 ```shell
 npm run repeat "path"
@@ -59,6 +83,24 @@ npm run repeat "path"
 
 ```shell
 npm run repeat cypress/integration/Stranger-List/E2E/**
+```
+
+5. To run the docker build
+
+```shell
+docker build -t cypress .  
+```
+
+6. To create and start containers of the project
+
+```shell
+docker-compose up  
+```
+
+7. To build or rebuild services of the project
+
+```shell
+docker-compose build
 ```
 
 ## Best practices
@@ -76,3 +118,4 @@ should (“be.visible”)', or certain actions that are allowed to be done in th
 handle random data through chance.js and to be able to upload images through cypress-file-upload. And finally, as a
 design pattern, the actions of the application were used, creating generic functions that through custom commands (
 Item_Commands.js and Intercept_Commands.js) we can call them in the code, reusing them without having to duplicate code.
+Additionally, the possibility of generating reports with the mochawesome-report dependencies was implemented.

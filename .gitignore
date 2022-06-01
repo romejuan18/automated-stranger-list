@@ -15,7 +15,8 @@ json_report
 \.idea/
 .vscode/
 #package.json
-results
+results/
+mochawesome.json
 reports
 package-lock.json
 cypress/downloads
