@@ -1,0 +1,15 @@
+version: '1'
+
+services:
+  e2e:
+    image: "cypress/included:9.7.0"
+    build: ./e2e
+    container_name: cypress
+    depends_on:
+      - web
+    environment:
+      - CYPRESS_baseUrl=http://immense-hollows-74271.herokuapp.com/
+    command: npx cypress run -s cypress/integration/Stranger-List/E2E/*
+    volumes:
+      - ./e2e/cypress:/app/cypress
+      - ./e2e/cypress.json:/app/cypress.json

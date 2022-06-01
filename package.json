@@ -1,0 +1,22 @@
+{
+  "name": "automated-stranger-list",
+  "version": "1.0.0",
+  "description": "Automated test for Stranger List",
+  "main": "index.js",
+  "scripts": {
+    "open": "cypress open",
+    "e2e": "cypress run --browser chrome --headless --spec \"cypress/integration/Stranger-List/E2E/**\"",
+    "repeat": "npx cypress-repeat run --browser chrome --headless -n 10 --spec"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
+    "chance": "^1.1.8",
+    "cypress": "^9.7.0",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-repeat": "^2.3.2",
+    "prettier": "2.6.2"
+  }
+}
