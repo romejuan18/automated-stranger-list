@@ -1,0 +1,23 @@
+{
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
+  "chromeWebSecurity": false,
+  "video": false,
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "reporter-config.json"
+  },
+  "videoUploadOnPasses": false,
+  "videoCompression": 0,
+  "requestTimeout": 60000,
+  "defaultCommandTimeout": 60000,
+  "responseTimeout": 60000,
+  "experimentalStudio": true,
+  "baseUrl": "http://immense-hollows-74271.herokuapp.com/",
+  "numTestsKeptInMemory": 0,
+  "downloadsFolder": "cypress/downloads"
+}

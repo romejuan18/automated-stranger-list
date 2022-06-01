@@ -1,0 +1,34 @@
+{
+  "name": "automated-stranger-list",
+  "version": "1.0.0",
+  "description": "Automated test for Stranger List",
+  "main": "index.js",
+  "scripts": {
+    "open": "cypress open",
+    "e2e": "cypress run --browser chrome --headless --spec",
+    "all": "npm run cypress-run; npm run junit-merge; npm run mochawesome-merge",
+    "repeat": "npx cypress-repeat run --browser chrome --headless -n 10 --spec",
+    "delete-reports": "rm -r cypress/results/* || true",
+    "cleanup": "npm run delete-reports",
+    "mochawesome-merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
+    "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
+    "cypress-run": "npm run cleanup && npx cypress run --browser electron"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
+    "chance": "^1.1.8",
+    "cypress": "^9.7.0",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-multi-reporters": "^1.6.0",
+    "cypress-repeat": "^2.3.2",
+    "junit-merge": "^2.0.0",
+    "mocha-junit-reporter": "^2.0.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0",
+    "prettier": "2.6.2"
+  }
+}
