@@ -27,6 +27,10 @@ describe('Edit an existing item', () => {
         cy.CC_add_item().as('addItem')
     })
 
+    afterEach(function () {
+        cy.CC_delete_item(this.lasItemModified.idLastItem)
+    })
+
     resolutions.forEach((resolution) => {
         it(`Edit item description and image successfully on ${resolution}`, function () {
             if (Cypress._.isArray(resolution)) {
@@ -68,7 +72,6 @@ describe('Edit an existing item', () => {
                     const descriptionModifiedItem = lasItemModified.descriptionModifiedLastItem
                     expect(descriptionModifiedItem.trim()).to.be.equal(descriptionModifiedText.trim())
                     expect(descriptionModifiedText.trim(), 'Original Description').not.to.be.equal(this.addItem.text, 'Modified Description')
-                    cy.CC_delete_item(lasItemModified.idLastItem)
                 })
             })
         })
